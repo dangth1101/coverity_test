@@ -1,14 +1,14 @@
 pipeline {
-  agent any
+  agent { label 'linux' }
   stages {
-    stage('version') {
+    stage('check') {
       steps {
-        sh 'python3 --version'
+        checkout scm
       }
     }
-    stage('hello') {
+    stage('compile') {
       steps {
-        sh 'python3 python_test.py'
+         sh 'python3 python_test.py'
       }
     }
   }
